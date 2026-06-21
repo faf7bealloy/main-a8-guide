@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>a8体育 — 简明使用指南与注意事项</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f5f7fa;
+            color: #1e2a3a;
+            line-height: 1.6;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0b1a2e 0%, #142b40 100%);
+            color: #eef2f5;
+            padding: 5rem 1.5rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: #f5f7fa;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 0.6rem;
+            position: relative;
+            z-index: 1;
+        }
+        .hero .sub {
+            font-size: 1.2rem;
+            opacity: 0.85;
+            max-width: 640px;
+            margin: 0 auto 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+        .hero .badge {
+            display: inline-block;
+            background: #3b82f6;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 1;
+            margin-top: 0.5rem;
+        }
+
+        /* 主内容区 */
+        .container {
+            max-width: 920px;
+            margin: -1.5rem auto 3rem;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.02);
+            padding: 2.5rem 2.8rem;
+            margin-bottom: 2.2rem;
+            transition: box-shadow 0.2s;
+        }
+        .card:hover {
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            border-left: 5px solid #3b82f6;
+            padding-left: 1rem;
+            margin-bottom: 1.6rem;
+            color: #0f1e2e;
+        }
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 1.8rem 0 0.6rem;
+            color: #1e3a5f;
+        }
+        .card h3:first-of-type {
+            margin-top: 0;
+        }
+
+        .card p {
+            margin-bottom: 1rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 1.4rem;
+        }
+        .card ul li {
+            padding: 0.4rem 0 0.4rem 2rem;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="%233b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>') left center no-repeat;
+            background-size: 18px;
+        }
+
+        .highlight-box {
+            background: #f0f4fe;
+            border-radius: 14px;
+            padding: 1.5rem 2rem;
+            margin: 1.8rem 0;
+            border-left: 6px solid #3b82f6;
+        }
+        .highlight-box .label {
+            font-weight: 600;
+            color: #1e3a5f;
+            margin-bottom: 0.4rem;
+        }
+
+        a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s, background 0.15s;
+            padding: 0 0.1rem;
+        }
+        a:hover {
+            border-bottom-color: #2563eb;
+            background: #eaf1fe;
+            border-radius: 2px;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            border: 1.5px solid #3b82f6;
+            background: transparent;
+            color: #1e3a5f;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            margin-top: 0.5rem;
+        }
+        .btn-outline:hover {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+
+        .faq-item {
+            margin: 1.2rem 0;
+            border-bottom: 1px solid #e5e9ef;
+            padding-bottom: 1rem;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #0f1e2e;
+            margin-bottom: 0.3rem;
+        }
+
+        /* 页脚 */
+        .footer {
+            text-align: center;
+            padding: 2rem 1.5rem 3rem;
+            color: #5b6f85;
+            font-size: 0.9rem;
+            border-top: 1px solid #e2e7ed;
+            margin-top: 1rem;
+            background: #ffffff;
+        }
+        .footer a {
+            font-weight: 400;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .hero { padding: 3.5rem 1.2rem 3rem; }
+            .hero h1 { font-size: 2rem; }
+            .hero .sub { font-size: 1rem; }
+            .card { padding: 1.8rem 1.2rem; }
+            .card h2 { font-size: 1.5rem; }
+            .highlight-box { padding: 1.2rem 1rem; }
+        }
+        @media (max-width: 480px) {
+            .container { padding: 0 0.8rem; }
+            .card { border-radius: 14px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <section class="hero">
+        <h1>a8体育 · 简明导航</h1>
+        <p class="sub">用更清爽的方式了解体育资讯与内容平台 —— 一份实用说明与提醒。</p>
+        <span class="badge">当前版本 · 产品说明</span>
+    </section>
+
+    <!-- 正文主体 -->
+    <div class="container">
+
+        <!-- 摘要 / 概述 -->
+        <div class="card">
+            <h2>📋 产品摘要</h2>
+            <p><a href="https://main-a8.com">a8体育</a> 是一个聚焦体育内容聚合与浏览的线上平台。它提供赛事资讯、数据动态、视频集锦以及社区讨论等模块。与其他体育站点相比，a8体育更注重信息呈现的清晰度与多终端适配，适合希望快速浏览体育信息的用户。</p>
+            <p>使用前建议了解其功能边界与访问特点，这篇文章整理了核心亮点、适用场景以及一些可信提醒，帮助你更顺畅地使用。</p>
+        </div>
+
+        <!-- 亮点 / 特点 -->
+        <div class="card">
+            <h2>✨ 功能亮点</h2>
+            <ul>
+                <li><strong>信息结构简洁</strong> — 主页按赛事、球队、视频分类，减少冗余跳转，常用内容两步内可达。</li>
+                <li><strong>多端体验一致</strong> — 移动端与桌面端布局自适应，使用过程中无需频繁缩放或横竖屏切换。</li>
+                <li><strong>数据更新较快</strong> — 重点赛事比分、赛程变动通常延迟较低，部分实时数据匹配官方来源。</li>
+                <li><strong>社区轻互动</strong> — 支持评论与观点表达，内容氛围偏向讨论而非刷屏，适合安静交流。</li>
+            </ul>
+            <div class="highlight-box">
+                <div class="label">💡 使用建议</div>
+                <p>建议优先使用主流浏览器（Chrome、Edge、Safari 最新版本）访问，并保持网络稳定。若遇到加载延迟，可尝试刷新或稍后重试。平台部分功能可能需要注册账户，注册时请参考站内指引。</p>
+            </div>
+        </div>
+
+        <!-- 常见使用场景 -->
+        <div class="card">
+            <h2>🏀 常见使用场景</h2>
+            <h3>日常赛事跟踪</h3>
+            <p>适合在比赛日快速查看即时比分、首发阵容及赛程变化。通过首页焦点区即可了解当天重点赛事。</p>
+            <h3>赛后回顾与集锦</h3>
+            <p>无法观看直播的用户可通过视频模块浏览高光时刻，平台压缩格式兼顾画质与加载速度。</p>
+            <h3>轻量社区交流</h3>
+            <p>在赛事或球队页面下方可查看其他用户评论，也可发表个人观点。注意尊重社区规则，避免恶意引战。</p>
+
+            <p style="margin-top: 1.8rem;">如果你想直接了解当前内容，可以前往 <a href="https://main-a8.com">a8体育</a> 查看最新信息。</p>
+        </div>
+
+        <!-- 可信但克制的访问说明 + 提醒 -->
+        <div class="card">
+            <h2>⚠️ 访问提醒与说明</h2>
+            <p>本说明基于公开信息整理，旨在帮助新用户快速了解平台特点。以下为几项值得注意的方面：</p>
+            <ul>
+                <li><strong>网络连接</strong> — 部分时段或地区访问速度可能受网络环境影响，建议使用稳定连接。</li>
+                <li><strong>内容来源</strong> — 平台内容部分来自合作数据源或用户贡献，客观性请自行判断，特别是非官方数据。</li>
+                <li><strong>账户安全</strong> — 如注册账户，建议使用独立密码，不与其他重要平台共用。</li>
+                <li><strong>广告与推广</strong> — 页面可能包含推广信息，使用过程中注意区分内容与广告标识。</li>
+            </ul>
+            <div class="highlight-box" style="background: #faf6ec; border-left-color: #e6a817;">
+                <div class="label">📌 提醒</div>
+                <p>本页面为说明页，并非 a8体育 官方。所有描述基于正常使用体验，不构成服务承诺。平台功能以 <a href="https://main-a8.com">a8体育</a> 实际呈现为准。</p>
+            </div>
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <div class="card">
+            <h2>❓ 常见疑问（FAQ）</h2>
+            <div class="faq-item">
+                <strong>是否需要付费？</strong>
+                <p>平台上大部分内容可以免费浏览，部分高级数据或去广告功能可能需要付费订阅，具体以站内说明为准。</p>
+            </div>
+            <div class="faq-item">
+                <strong>如何获取帮助或反馈？</strong>
+                <p>站内通常设有“帮助中心”或“联系客服”入口，也可以在社区板块发帖询问（注意遵守版规）。</p>
+            </div>
+            <div class="faq-item">
+                <strong>移动端体验如何？</strong>
+                <p>可以浏览器直接访问，无需安装额外应用。界面针对触屏优化，滑动与点击区域适配顺手。</p>
+            </div>
+            <div class="faq-item" style="border-bottom: none;">
+                <strong>推荐使用哪些浏览器？</strong>
+                <p>现代浏览器均可，推荐 Chrome 或 Safari 以获得最佳显示效果。</p>
+            </div>
+        </div>
+
+        <!-- 附加：简洁指引卡片 -->
+        <div class="card" style="text-align: center; padding: 2rem 1.8rem;">
+            <p style="font-size: 1.1rem; margin-bottom: 0.5rem;">📬 如果你对 a8体育 感兴趣，可以随时浏览</p>
+            <p><a href="https://main-a8.com" style="font-size: 1.3rem; border-bottom: 2px solid #3b82f6; padding-bottom: 2px;">a8体育</a></p>
+            <p style="color: #5b6f85; margin-top: 1rem; font-size: 0.9rem;">查看当前内容，合理安排使用时间</p>
+        </div>
+
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer">
+        <p>本页为产品说明页 · 基于公开体验整理 · 更新时间：2025年</p>
+        <p style="margin-top: 0.3rem;">如有疑问，请参考 <a href="https://main-a8.com">a8体育</a> 站内指引</p>
+    </div>
+
+</body>
+</html>
